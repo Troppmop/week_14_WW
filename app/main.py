@@ -8,6 +8,9 @@ def root():
 
 @app.post('/upload')
 def upload_csv(file: UploadFile = File(media_type='multipart/form-data')):
-    #to add custom pandas functions here
+    
+    #to add pydantic validation function calls here
+
+    #to add custom pandas function calls here
     
     return {"file uploaded":file.filename}
