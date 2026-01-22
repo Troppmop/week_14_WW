@@ -1,0 +1,15 @@
+services:
+  mysql:
+    container_name: ww_mysql
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_ALLOW_EMPTY_PASSWORD: True
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:

@@ -2,6 +2,7 @@ from fastapi import FastAPI, File, UploadFile
 from io import StringIO
 
 from .utils import *
+from .db import *
 
 app = FastAPI()
 
@@ -24,7 +25,12 @@ def upload_csv(file: UploadFile = File(media_type='multipart/form-data')):
     #to add pydantic validation function calls here
     valid_data = validate_items(data)
 
-    
+    #database calls
+    cnx, cursor = connect_db()
+
+    create_table(cnx,cursor)
+
+    disconnect_db(cnx,cursor)
 
     data.close()
     file.file.close()
