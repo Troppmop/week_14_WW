@@ -22,3 +22,7 @@ def export_dict(df:pd.DataFrame) -> list[dict]:
 def add_risk_level(df: pd.DataFrame) -> pd.DataFrame:
     df['risk_level'] = pd.cut(x=df['range_km'], bins=[0,20,100,300,np.inf], labels=['low','medium','high','extreme'])
     return df
+
+def clean_manufacturer(df:pd.DataFrame) -> pd.DataFrame:
+    df['manufacturer'] = df['manufacturer'].fillna('Unknown')
+    return df 
